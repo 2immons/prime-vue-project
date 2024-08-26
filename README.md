@@ -1,19 +1,19 @@
 # prime-vue-project
 
-## Project setup
+### Описание:
+#### https://docs.google.com/document/d/1SbkhKTOizJp6UUUoWAa51i9zLFJ1n2Cue--Eu3Zl1I0/edit
+
+## Установка зависимостей
 ```
 npm install
 ```
 
-### Compiles and hot-reloads for development
+### Запуск в режиме разработки
 ```
 npm run serve
 ```
 
-### Compiles and minifies for production
+### Деплой
 ```
-npm run build
+npm run deploy
 ```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
