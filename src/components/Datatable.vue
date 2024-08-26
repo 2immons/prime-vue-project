@@ -8,7 +8,7 @@ const logMessages = ref<{ messages: string[] }[]>([])
 
 onMounted(async () => {
   try {
-    const response = await fetch('/dataset.json')
+    const response = await fetch(`${process.env.BASE_URL}dataset.json`)
     const data = await response.json()
     rawString.value = data.raw_strings
 
@@ -22,7 +22,7 @@ onMounted(async () => {
 
 // parseLogString возвращает массив из строки, разделенной по меткам времени
 const parseLogString = (logString: string): string[] => {
-  return logString.split(/(?=\[\d{2}:\d{2}:\d{2}\])/)
+  return logString.split(/(?=\[\d{2}:\d{2}:\d{2}])/)
       .map(msg => msg.trim())
       .filter(msg => msg.length > 0);
 }

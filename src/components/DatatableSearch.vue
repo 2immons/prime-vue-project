@@ -3,7 +3,6 @@ import InputText from 'primevue/inputtext'
 import InputGroup from 'primevue/inputgroup';
 import Button from "primevue/button";
 import DataTable from 'primevue/datatable';
-import Checkbox from "primevue/checkbox";
 import Column from 'primevue/column';
 import {ref, onMounted, watch, computed} from 'vue';
 import MultiSelect from "primevue/multiselect";
@@ -34,7 +33,7 @@ const selectedProducts = ref() // выбранные в таблице прод�
 // Получение продуктов из dataset
 onMounted(async () => {
   try {
-    const response = await fetch('/dataset.json')
+    const response = await fetch(`${process.env.BASE_URL}dataset.json`)
     const data = await response.json()
     products.value = data.products.map((product: Product) => ({
       code: product.code,
