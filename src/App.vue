@@ -1,27 +1,21 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js + TypeScript App"/>
+  <div class="container">
+    <LinkField />
+    <Time />
+    <Select />
+    <DataTable />
+    <DatatableSearch />
+  </div>
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue';
-import HelloWorld from './components/HelloWorld.vue';
+<script setup lang="ts">
+import './styles/styles.scss'
+import 'primeicons/primeicons.css'
 
-export default defineComponent({
-  name: 'App',
-  components: {
-    HelloWorld
-  }
-});
+import LinkField from './components/LinkField.vue'
+import Time from './components/Time.vue'
+import Select from './components/Select.vue'
+import DataTable from "./components/Datatable.vue";
+import DatatableSearch from "@/components/DatatableSearch.vue";
+
 </script>
-
-<style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
