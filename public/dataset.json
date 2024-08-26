@@ -1,0 +1,52 @@
+{
+  "cities": [
+    "Москва", "Саратов", "Калининград", "Санкт-Петербург", "Волгоград"
+  ],
+  "products": [
+    {
+      "code": "f230fhD3g",
+      "name": "Мяч",
+      "image": "image",
+      "price": 100.00,
+      "category": "Категория 1",
+      "reviews": 3,
+      "status": "INSTOCK"
+    },
+    {
+      "code": "a2335fD3g",
+      "name": "100.00",
+      "image": "image",
+      "price": 120.20,
+      "category": "Категория 2",
+      "reviews": 5,
+      "status": "OUTOFSTOCK"
+    },
+    {
+      "code": "c2335fD3g",
+      "name": "Браслет",
+      "image": "image",
+      "price": 20.20,
+      "category": "Категория 2",
+      "reviews": 4,
+      "status": "LOWSTOCK"
+    },
+    {
+      "code": "b2335fD3g",
+      "name": "Груша",
+      "image": "image",
+      "price": 30.20,
+      "category": "Категория 1",
+      "reviews": 4,
+      "status": "INSTOCK"
+    },
+    {
+      "code": "h2335fD3g",
+      "name": "Полка",
+      "image": "image",
+      "price": 40.20,
+      "category": "Категория 2",
+      "reviews": 2,
+      "status": "INSTOCK"
+    }
+  ]
+}

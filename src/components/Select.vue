@@ -1,16 +1,29 @@
 <script setup lang="ts">
 import MultiSelect from 'primevue/multiselect';
 import Button from "primevue/button";
-import { ref, computed } from 'vue';
+import { ref, computed, onMounted } from 'vue';
 
 const selectedCities = ref<any[]>([]);
-const cities = ref([
-  { name: 'Saratov' },
-  { name: 'Moscow' },
-  { name: 'SPB' }
-]);
 
-const showClearButton = computed(() => selectedCities.value.length > 0);
+interface City {
+  name: string;
+}
+
+const cities = ref<City[]>([]);
+
+onMounted(async () => {
+  try {
+    const response = await fetch('/dataset.json');
+    const data = await response.json();
+    cities.value = data.cities.map((city: string) => ({ name: city }));
+  } catch (error) {
+    console.error('Ошибка при загрузке данных:', error);
+  }
+});
+
+const isClearButtonVisible = computed(() => {
+  return selectedCities.value.length > 0
+})
 
 const clearSelection = () => {
   selectedCities.value = []
@@ -24,10 +37,11 @@ const clearSelection = () => {
         :options="cities"
         optionLabel="name"
         placeholder="Выберите города"
+        :showToggleAll="false"
         class="multiselect"
     />
     <div class="clear-button">
-      <Button v-if="showClearButton"
+      <Button v-if="isClearButtonVisible"
               @click="clearSelection"
               icon="pi pi-times"
               severity="danger"
@@ -43,6 +57,7 @@ const clearSelection = () => {
   position: relative;
   display: flex;
   align-items: center;
+  width: 400px;
 }
 
 .clear-button {
@@ -54,5 +69,6 @@ const clearSelection = () => {
 
 .multiselect {
   width: 100%;
+  font-family: sans-serif;
 }
 </style>
