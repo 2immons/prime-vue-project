@@ -8,7 +8,7 @@
         @keypress.enter="handleBlur"
     />
     <div v-else class="link-display">
-      <a :href="url">{{ title }}</a>
+      <a :href="url" target="_blank">{{ title }}</a>
       <i class="pi pi-pencil" @click="handleEditClick"></i>
     </div>
   </div>
@@ -20,18 +20,22 @@ import InputText from "primevue/inputtext";
 
 const isEditing = ref(true);
 const url = ref("");
-const title = ref();
+const title = ref("");
 const placeholder = "https://";
 
-const fetchTitle = async (url: string) => {
+const fetchTitle = async (url: string): Promise<string> => {
   try {
-    const response = await fetch('https://cors-anywhere.herokuapp.com/' + url);
-    const text = await response.text();
-    const matches = text.match(/<title>([^<]*)<\/title>/);
-    title.value = matches ? matches[1] : 'Заголовок не найден';
+    const response = await fetch(url);
+    if (!response.ok) {
+      throw new Error('Получен некорректный ответ от сервера');
+    }
+    const htmlText = await response.text();
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(htmlText, 'text/html');
+    return doc.querySelector('title')?.innerText || 'Заголовок не найден';
   } catch (error) {
     console.error('Ошибка при получении заголовка:', error);
-    title.value = 'Не удалось получить заголовок';
+    return 'Не удалось получить заголовок (возможно, CORS)';
   }
 };
 
