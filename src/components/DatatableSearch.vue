@@ -3,7 +3,6 @@ import InputText from 'primevue/inputtext'
 import InputGroup from 'primevue/inputgroup';
 import Button from "primevue/button";
 import DataTable from 'primevue/datatable';
-import Checkbox from "primevue/checkbox";
 import Column from 'primevue/column';
 import {ref, onMounted, watch, computed} from 'vue';
 import MultiSelect from "primevue/multiselect";

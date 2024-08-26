@@ -22,7 +22,7 @@ onMounted(async () => {
 
 // parseLogString возвращает массив из строки, разделенной по меткам времени
 const parseLogString = (logString: string): string[] => {
-  return logString.split(/(?=\[\d{2}:\d{2}:\d{2}\])/)
+  return logString.split(/(?=\[\d{2}:\d{2}:\d{2}])/)
       .map(msg => msg.trim())
       .filter(msg => msg.length > 0);
 }

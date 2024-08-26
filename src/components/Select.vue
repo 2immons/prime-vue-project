@@ -3,28 +3,29 @@ import MultiSelect from 'primevue/multiselect';
 import Button from "primevue/button";
 import { ref, computed, onMounted } from 'vue';
 
-const selectedCities = ref<any[]>([]);
-
 interface City {
   name: string;
 }
 
 const cities = ref<City[]>([]);
+const selectedCities = ref<any[]>([]);
 
 onMounted(async () => {
   try {
-    const response = await fetch('/dataset.json');
-    const data = await response.json();
-    cities.value = data.cities.map((city: string) => ({ name: city }));
+    const response = await fetch('/dataset.json')
+    const data = await response.json()
+    cities.value = data.cities.map((city: string) => ({ name: city }))
   } catch (error) {
-    console.error('Ошибка при загрузке данных:', error);
+    console.error('Ошибка при загрузке данных:', error)
   }
 });
 
+// Регулирует отображение кнопки "Стереть" в поле поиска
 const isClearButtonVisible = computed(() => {
   return selectedCities.value.length > 0
 })
 
+// clearSelection стирает поле поиска
 const clearSelection = () => {
   selectedCities.value = []
 }
